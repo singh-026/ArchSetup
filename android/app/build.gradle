@@ -1,6 +1,22 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
 
+project.ext.envConfigFiles = [
+    release: "env.dev",
+    debug: "env.dev",
+    devdebug: "env.dev",
+    devrelease: "env.dev",
+    proddebug: "env.prod",
+    prodrelease: "env.prod",
+    stagedebug: "env.stage",
+    stagerelease: "env.stage"
+
+]
+
+apply from: project(':react-native-config').projectDir.getpath() + "/dotenv.gradle"
+
+
+
 import com.android.build.OutputFile
 
 /**
@@ -92,6 +108,34 @@ android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
+    flavorDimensions "default"
+    productFlavors{
+        dev{
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId "com.tsarch.dev"
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            resValue "string", "build_config_package", "com.tsarch"
+            versionCode 1
+            versionName "1.0"
+
+        }
+        stage{
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId "com.tsarch.stage"
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            resValue "string", "build_config_package", "com.tsarch"
+            versionCode 1
+            versionName "1.0"
+        }
+        prod{
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId "com.tsarch.prod"
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            resValue "string", "build_config_package", "com.tsarch"
+            versionCode 1
+            versionName "1.0"
+        }
+    }
 
     namespace "com.tsarch"
     defaultConfig {
