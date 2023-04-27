@@ -1,10 +1,19 @@
-import {configureStore} from '@reduxjs/toolkit';
+import {MiddlewareArray, configureStore} from '@reduxjs/toolkit';
+import {combineReducers} from '@reduxjs/toolkit';
+import {counterSlice} from '../_features';
+import logger from 'redux-logger'
+
+const rootReducer = combineReducers({
+  counter: counterSlice.reducer,
+});
 
 export const store = configureStore({
-  reducer: {},
+  reducer: rootReducer,
+  middleware: new MiddlewareArray().concat(logger),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
+export default store;
