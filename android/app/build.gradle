@@ -1,19 +1,10 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
 
-project.ext.envConfigFiles = [
-    release: "env.dev",
-    debug: "env.dev",
-    devdebug: "env.dev",
-    devrelease: "env.dev",
-    proddebug: "env.prod",
-    prodrelease: "env.prod",
-    stagedebug: "env.stage",
-    stagerelease: "env.stage"
 
-]
 
-apply from: project(':react-native-config').projectDir.getpath() + "/dotenv.gradle"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"//for .env setup
+
 
 
 
@@ -195,6 +186,8 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+    implementation "com.facebook.react:react-native:+"  // From node_modules
+	implementation project(':react-native-config')
 
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
 
