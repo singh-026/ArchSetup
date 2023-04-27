@@ -8,18 +8,11 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "dev-android": "react-native run-android --variant=devDebug --appIdSuffix dev",
-    "dev-android-release-variant": "react-native run-android --variant=devRelease --appIdSuffix dev",
-    "dev-android-release": "cd android && ./gradlew clean && ./gradlew assembleDevRelease", 
-
-    "stage-android": "react-native run-android --variant=stageDebug --appIdSuffix stage",
-    "stage-android-release-variant": "react-native run-android --variant=stageRelease --appIdSuffix stage",
-    "stage-android-release": "cd android && ./gradlew clean && ./gradlew assembleStageRelease",
-
-    "prod-android": "react-native run-android --variant=prodDebug --appIdSuffix prod",
-    "prod-android-release-variant": "react-native run-android --variant=prodRelease --appIdSuffix prod",
-    "prod-android-release": "cd android && ./gradlew clean && ./gradlew assembleProdRelease"
-   
+    "build-staging": "cp ./.env.staging ./.env && npx react-native run-android",
+    "build-prod": "cp ./.env.prod ./.env && npx react-native run-android",
+    "release-staging": "cd android && ENVFILE=.env.staging ./gradlew assembleRelease",
+    "release-prod": "cd android && ENVFILE=.env.prod ./gradlew assembleRelease",
+    "release-prod_aab": "cd android && ENVFILE=.env.prod ./gradlew bundleRelease"
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.6",
