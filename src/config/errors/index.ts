@@ -10,7 +10,7 @@ export enum SignUpError {
   SignUpError,
 }
 // example for throwing and typesafing custom errors
-export const uploadMediaGetError = (): Failure<SignInError.SignInError> => ({
+export const signinError = (): Failure<SignInError.SignInError> => ({
   type: SignInError.SignInError,
   reason: 'error signin in',
 });

@@ -27,6 +27,7 @@ const spacing = {
 export type Spacing = keyof typeof spacing;
 export type Colors = keyof typeof colors;
 export type Palette = keyof typeof palette;
+
 export type FontFamily = 'HelveticaNeueLTPro-LtIt' | 'HelveticaNeueLTPro-Bd';
 // can add as many for the types
 
@@ -38,14 +39,14 @@ const textVariants = {
     lineHeight: normalizeModerately(12),
     textTransform: 'uppercase',
   },
-  tag2: {
-    fontFamily: 'HelveticaNeueLTPro-Md',
+  heading: {
+    fontFamily: 'HelveticaNeueLTPro-Bd',
     fontSize: normalizeModerately(12),
     letterSpacing: 4,
     lineHeight: normalizeModerately(14),
     textTransform: 'uppercase',
   },
-  tag3: {
+  subHeading: {
     fontFamily: 'HelveticaNeueLTPro-Md',
     fontSize: normalizeModerately(12),
     letterSpacing: 4,
@@ -62,5 +63,6 @@ const theme = createTheme({
   },
   textVariants: textVariants,
 });
+
 export type Theme = typeof theme;
 export default theme;
